@@ -1,20 +1,23 @@
 import React, { Component } from 'react';
-
+import { connect } from 'react-redux';
 
 class App extends Component {
+  
+  //const books = this.props.books.books;
+  
   render() {
+  	console.log(this.props);
     return (
-      <div className="App">
-        <header className="App-header">
-      
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+      <div className="container">
+      	<h1>Hello world!!!</h1>	 
       </div>
     );
   }
 }
 
-export default App;
+const mapState = state => ({
+	...state
+});
+
+
+export default connect(mapState)(App);
