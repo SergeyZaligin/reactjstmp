@@ -1,12 +1,6 @@
 const initialState = {
 	isReady: false,
-	books: [
-		{
-			id: 1,
-			title: 'Voina i mir',
-			author: 'Tolstoy'
-		}
-	]
+	items: null
 };
 
 export default (state = initialState, action) => {
@@ -14,8 +8,13 @@ export default (state = initialState, action) => {
 		case 'SET_BOOKS':
 			return {
 				...state,
-				books: action.payload,
+				items: action.payload,
 				isReady: true
+			}
+			case 'SET_IS_READY':
+			return {
+				...state,
+				isReady: action.payload
 			}
 		default:
 			return state;

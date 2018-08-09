@@ -1,31 +1,35 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { setBooks } from './actions/books';
+import { books } from './books.json';
 
 class App extends Component {
   
   //const books = this.props.books.books;
   
   render() {
-  	const { books } = this.props.books;
-    const { setBooks } = this.props;
-    const newBooks = [
-      {
-        id: 0,
-        title: 'Hz'
-      }
-    ];
+  	// const { books } = this.props;
     return (
       <div className="container">
-      	<h1>{books[0].title}</h1>	 
-        <button onClick={setBooks.bind(this, newBooks)}>Load</button>
+      	<ul>
+          <li>
+            {
+              books.map(book => (
+                <li>
+                  {book.title}
+                </li>
+              ))
+            }
+          </li>
+        </ul>
       </div>
     );
   }
 }
 
-const mapState = state => ({
-	...state
+// Передача самому компоненту
+const mapState = ({ books }) => ({
+	books: books.items
 });
 
 const mapDispatchToProps = dispatch => ({
