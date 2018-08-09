@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { setBooks } from './actions/books';
-import { books } from './books.json';
+import books from './books.json';
 
 class App extends Component {
   
@@ -12,15 +12,13 @@ class App extends Component {
     return (
       <div className="container">
       	<ul>
-          <li>
-            {
-              books.map(book => (
-                <li>
-                  {book.title}
-                </li>
-              ))
-            }
-          </li>
+          {
+            books.map(book => (
+              <li key={book.id} >
+                <b>{book.title}</b> - {book.author}
+              </li>
+            ))
+          }
         </ul>
       </div>
     );
